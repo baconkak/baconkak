@@ -1,80 +1,77 @@
+/* General Styling */
 * {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
 }
 
 body {
-    background-image: url(https://i.pinimg.com/originals/3d/38/4d/3d384d829dbf4b678cfea617114e149d.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
-}
-
-h1{
-    
-    color: white;
-    background-color: black;
-    text-align: center;
-    font-weight: bold;
-    border-radius: 10px ;
+    background-color: #fffaf0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
     padding: 20px;
-    margin: 10px 0px 30px 0px;
-    border: 2px solid red;
-
 }
 
-#propic1 {
-    flex: 0 0 auto;
-    height: 400px;
-    width: 400px;
-    margin: 0 3%;
-    border: 5px solid darkblue;
-    border-radius: 50%;
-    background-image: url(Bacon.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-#propic2 {
-    flex: 0 0 auto;
-    height: 400px;
-    width: 400px;
-    margin: 0 3%;
-    border: 5px solid darkblue;
-    border-radius: 50%;
-    background-image: url(Title.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-#propic3 {
-    flex: 0 0 auto;
-    width: 400px;
-    height: 400px;
-    margin: 0 3%;
-    border: 5px solid darkblue;
-    border-radius: 50%;
-    background-image: url(Boss.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-.sudlor {
+/* Birthday Card */
+.birthday-card {
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    max-width: 900px;
+    text-align: center;
 }
 
-#propic1:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 8px black;
+/* Image Section */
+.image-container img {
+    width: 100%;
+    height: auto;
+    display: block;
 }
 
-#propic2:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 8px black;
+/* Text Section */
+.text-container {
+    padding: 20px;
+    flex: 1;
 }
 
-#propic3:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 8px black;
+.text-container h1 {
+    font-size: 24px;
+    color: #ff4081;
+    margin-bottom: 10px;
+}
+
+.text-container p {
+    font-size: 18px;
+    color: #333;
+}
+
+/* Responsive Design */
+@media (min-width: 768px) {
+    .birthday-card {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .image-container {
+        flex: 1;
+    }
+
+    .text-container {
+        flex: 1;
+        padding: 40px;
+    }
+
+    .text-container h1 {
+        font-size: 32px;
+    }
+
+    .text-container p {
+        font-size: 20px;
+    }
 }
