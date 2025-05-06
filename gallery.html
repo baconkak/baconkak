@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Our Memories 📸</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap');
+
+        body {
+            margin: 0;
+            padding: 2rem;
+            font-family: 'Courier Prime', monospace;
+            background: #111 url('gallery-bg.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff8e7;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .lightbox-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.9);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 999;
+        }
+
+        .lightbox-overlay img {
+            max-width: 90vw;
+            max-height: 90vh;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+        }
+
+        .lightbox-overlay.active {
+            display: flex;
+        }
+
+        .lightbox-overlay:after {
+            content: "✕";
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .gallery-item {
+            background-color: rgba(0, 0, 0, 0.5);
+            border: 2px solid #fff8e7;
+            border-radius: 15px;
+            overflow: hidden;
+            padding: 1rem;
+        }
+
+        .gallery-item img,
+        .gallery-item video {
+            cursor: pointer;
+            transition: transform 0.2s ease;
+            max-height: 250px;
+            width: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+            display: block;
+            margin: 0 auto 0.5rem;
+        }
+
+        .gallery-item img:hover {
+            transform: scale(1.02);
+        }
+
+        .caption {
+            font-style: italic;
+            font-size: 0.95rem;
+            color: #e8d9c1;
+        }
+
+        .focus-bottom {
+            object-position: bottom;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <iframe src="player.html" style="display:none;" allow="autoplay"></iframe>
+    <h1>📸 Our Moments Together</h1>
+
+    <div class="gallery-grid">
+        <!-- ภาพ 1 -->
+        <div class="gallery-item">
+            <img src="HBD.png" alt="Birthday"  onclick="openLightbox(this.src)">
+            <div class="caption">🎂 18 March 2025 — Your Birthday Card</div>
+        </div>
+
+        <!-- ภาพ 2 -->
+        <div class="gallery-item">
+            <img src="bicycle.jpg" alt="Salaya" class="focus-bottom"  onclick="openLightbox(this.src)">
+            <div class="caption">🚲 20 April 2025 — Our First Bicycle</div>
+        </div>
+
+        <div class="gallery-item">
+            <video autoplay loop muted playsinline width="100%">
+                <source src="moment1.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="caption">🎥 24 April 2025 — You smiled and I melted</div>
+        </div>
+
+        <!-- ภาพ 3 -->
+        <!-- <div class="gallery-item">
+      <img src="laugh.jpg" alt="Laugh Together">
+      <div class="caption">😂 27 April 2025 — Just laughing at nothing</div>
+    </div> -->
+
+        <!-- เพิ่มอีกได้เลย -->
+    </div>
+
+    <div id="lightbox" class="lightbox-overlay" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="">
+      </div>
+
+      <script>
+        function openLightbox(src) {
+          const lightbox = document.getElementById('lightbox');
+          const img = document.getElementById('lightbox-img');
+          img.src = src;
+          lightbox.classList.add('active');
+        }
+      
+        function closeLightbox() {
+          document.getElementById('lightbox').classList.remove('active');
+        }
+      </script>
+
+</body>
+
+</html>

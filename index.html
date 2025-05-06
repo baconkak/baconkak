@@ -3,49 +3,72 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>ถึง Noodee คนพิเศษ 💌</title>
+  <title>>yay~ 4 weeks already since I know u 💞</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap');
+
     body {
-      font-family: 'Prompt', sans-serif;
-      background: linear-gradient(to bottom right, #ffe4f0, #e0f7ff);
       margin: 0;
       padding: 0;
+      height: 100vh;
+      font-family: 'Courier Prime', monospace;
+      background-image: url('Noodee.jpg'); /* ใส่ภาพของคุณตรงนี้ */
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
       flex-direction: column;
-      text-align: center;
+      color: #fff8e7;
+      text-shadow: 1px 1px 2px #000;
+      backdrop-filter: sepia(40%) brightness(90%) contrast(90%);
     }
 
     h1 {
-      color: #ff5c8a;
-      margin-bottom: 2rem;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .tagline {
+      font-size: 1.2rem;
+      margin-bottom: 2.5rem;
+      max-width: 80%;
+      text-align: center;
+      font-style: italic;
+      opacity: 0.9;
     }
 
     .button {
       display: inline-block;
-      margin: 1rem;
       padding: 1rem 2rem;
       font-size: 1.2rem;
-      color: white;
-      background-color: #ff69b4;
-      border: none;
-      border-radius: 15px;
-      text-decoration: none;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      color: #fff8e7;
+      background-color: rgba(0, 0, 0, 0.6);
+      border: 2px solid #fff8e7;
+      border-radius: 10px;
+      cursor: pointer;
       transition: background-color 0.3s ease;
     }
 
     .button:hover {
-      background-color: #ff4081;
+      background-color: rgba(255, 255, 255, 0.2);
     }
+
   </style>
 </head>
 <body>
-  <h1>ถึง Noodee คนเก่งของเค้า 💗</h1>
 
-  <a href="happybirthday.html" class="button">🎂 HBD สำหรับคนพิเศษ</a>
-  <a href="love.html" class="button">💖 ข้อความจากใจ(กดอานนินะคั้บ)</a>
+  <h1>Yay~ 4 weeks already since I know u 💞</h1>
+  <div class="tagline">“4 weeks might seem short, but since you came into my life, everything feels brighter.”</div>
+
+  <button class="button" onclick="goToPage2()">Click to continue</button>
+
+  <script>
+    function goToPage2() {
+      window.location.href = 'page2.html';
+    }
+  </script>
+
 </body>
 </html>
