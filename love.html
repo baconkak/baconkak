@@ -3,66 +3,188 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>สำหรับคนเก่งของเค้า 💙</title>
+  <title>💌 ซองจดหมายวินเทจ</title>
   <style>
     body {
-      font-family: 'Prompt', sans-serif;
-      background: linear-gradient(to bottom right, #cce7ff, #fbeaff);
-      color: #333;
       margin: 0;
-      padding: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      font-family: 'Prompt', sans-serif;
+      background: url('https://www.transparenttextures.com/patterns/paper-fibers.png'), #fdf6e3;
+      background-blend-mode: multiply;
+      background-size: cover;
+      color: #333;
       min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
     }
-    .card {
-      background: white;
-      padding: 3rem;
-      border-radius: 25px;
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-      text-align: center;
-      max-width: 500px;
-    }
+
     h1 {
-      color: #5b78ff;
-      margin-bottom: 1rem;
+      color: #6e3b26;
+      margin-bottom: 2rem;
     }
-    p {
-      font-size: 1.2rem;
+
+    .envelopes {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+    }
+
+    .envelope {
+      width: 180px;
+      height: 130px;
+      background: #fff5e6;
+      border: 2px solid #bfa87d;
+      border-radius: 8px;
+      position: relative;
+      cursor: pointer;
+      box-shadow: inset 0 0 0 1px #e0caa6, 0 4px 10px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      background-image: linear-gradient(
+        145deg,
+        rgba(255, 255, 255, 0) 49.5%,
+        rgba(0, 0, 0, 0.05) 50.5%
+      );
+    }
+
+    .envelope:hover {
+      transform: scale(1.05);
+      box-shadow: inset 0 0 0 1px #e0caa6, 0 6px 14px rgba(0,0,0,0.15);
+    }
+
+    .envelope-label {
+      position: absolute;
+      bottom: 10px;
+      width: 100%;
+      text-align: center;
+      font-weight: bold;
+      color: #8b5e3c;
+    }
+
+    .modal {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.4);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 99;
+    }
+
+    .modal.active {
+      display: flex;
+    }
+
+    .modal-content {
+      background: #fffef9;
+      padding: 2rem;
+      border-radius: 20px;
+      max-width: 600px;
+      width: 90%;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      text-align: left;
+      position: relative;
+      animation: fadeIn 0.5s ease;
+      border: 1px solid #d9c8a9;
+    }
+
+    .modal-content h2 {
+      margin-top: 0;
+      color: #5a3d2b;
+    }
+
+    .modal-content p {
+      font-size: 1.1rem;
       line-height: 1.8;
+      color: #444;
     }
-    .heart {
-      font-size: 2rem;
-      animation: pulse 1.5s infinite;
-      color: #ff6b81;
-      margin-top: 1.5rem;
+
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #999;
     }
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.2); }
+
+    .close-btn:hover {
+      color: #333;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 <body>
-  <div class="card">
-    <h1>ถึงคนเก่งของเค้า (เจ้ามะเขือเทศ) 🌟</h1>
-    <p>
-      ผ่านมาแค่ 4 สัปดาห์แยะ ไวมั่ก ๆๆ แต่รู้สึกเหมือนรู้จักเธอมานานกว่านั้นเยอะเลย <br />
-      เค้าอยากให้รู้ไว้นะว่า ทุกข้อความและเสียงที่เธอส่งมา และทุกครั้งที่เธอให้กำลังใจ<br />
-      มันเติมเต็มวันที่ธรรมดาให้กลายเป็นวันที่พิเศษมาก ๆ สำหรับเบคอนเลยคั้บ 🧡
-    </p>
-    <p>
-      ขอบคุณที่เป็นตัวเองแบบที่น่ารักและอบอุ่นเสมอ <br />
-      ขอบคุณที่เปิดใจให้กันนะคั้บ <br />
-      ถึงจะเพิ่งผ่านมาแค่ 4 อาทิตย์ แต่มานน่ารักมาก ๆ เยยนะ<br />
-      ต่อจากนี้ ไม่ว่าจะเหนื่อยแค่ไหน เค้าจะอยู่ข้าง ๆ เธอเสมอเลยนะคับ 🤍<br />
-      รักนะ เจ้ามะเขือเทศของเบคอน 🍅
-    </p>
-    <p style="margin-top: 3rem; font-size: 1.1rem; font-style: italic; color: #888;">
-  — From <strong style="color:#ff69b4;">Bacon 💌</strong>
-    </p>
-    <div class="heart">💖</div>
+  <iframe src="playerlove.html" style="display:none;" allow="autoplay"></iframe>
+  <h1>💌 ซองจดหมายจากเบคอน</h1>
+
+  <div class="envelopes">
+    <div class="envelope" onclick="openModal('letter1')">
+      <div class="envelope-label">6 พ.ค. 2568</div>
+    </div>
+
+    <div class="envelope" onclick="openModal('letter2')">
+      <div class="envelope-label">13 พ.ค. 2568</div>
+    </div>
   </div>
+
+  <!-- จดหมาย 1 -->
+  <div class="modal" id="letter1">
+    <div class="modal-content">
+      <button class="close-btn" onclick="closeModal('letter1')">&times;</button>
+      <h2>ถึงคนเก่งของเค้า (เจ้ามะเขือเทศ) 🌟</h2>
+      <p>
+        ผ่านมาแค่ 4 สัปดาห์แยะ ไวมั่ก ๆๆ แต่รู้สึกเหมือนรู้จักเธอมานานกว่านั้นเยอะเลย <br />
+        เค้าอยากให้รู้ไว้นะว่า ทุกข้อความและเสียงที่เธอส่งมา และทุกครั้งที่เธอให้กำลังใจ<br />
+        มันเติมเต็มวันที่ธรรมดาให้กลายเป็นวันที่พิเศษมาก ๆ สำหรับเบคอนเลยคั้บ 🧡
+      </p>
+      <p>
+        ขอบคุณที่เป็นตัวเองแบบที่น่ารักและอบอุ่นเสมอ <br />
+        ขอบคุณที่เปิดใจให้กันนะคั้บ <br />
+        ถึงจะเพิ่งผ่านมาแค่ 4 อาทิตย์ แต่มานน่ารักมาก ๆ เยยนะ<br />
+        ต่อจากนี้ ไม่ว่าจะเหนื่อยแค่ไหน เค้าจะอยู่ข้าง ๆ เธอเสมอเลยนะคับ 🤍<br />
+        รักนะ เจ้ามะเขือเทศของเบคอน 🍅
+      </p>
+      <p style="margin-top: 2rem; font-style: italic;">— From <strong style="color:#ff69b4;">Bacon 💌</strong></p>
+    </div>
+  </div>
+
+  <!-- จดหมาย 2 -->
+  <div class="modal" id="letter2">
+    <div class="modal-content">
+      <button class="close-btn" onclick="closeModal('letter2')">&times;</button>
+      <h2>📬 ถึงลูกสาวสุดน่ารักของคุณแม่ คิคิ</h2>
+      <p> 
+        5 สัปดาห์แย้ว ไวมาก ๆๆ<br />
+        ขอโทษที่หลอกว่าจะไปนอนนะครับ แบร่ <br />
+        ขอบคุณที่น่ารักกับเค้าตลอดเยย นักซัพพอร์ตของเค้า <br />
+        เธอน่ารักมาก ๆ ง่ะ ไม่รู้จะบรรยายยังไงเยย <br />
+        ขอบคุณที่เธอซื้อกล้วยให้เค้า แล้วก็เป็นห่วงเค้า <br />
+        เธอดูแลเค้าดีมาก ๆ เยยง่ะ จำได้ทุกอย่างเยย ฮือ <br />
+        รักนะ เจ้ามะเขือเทศของเบคอน 🍅
+      </p>
+    </div>
+  </div>
+
+  <script>
+    function openModal(id) {
+      document.getElementById(id).classList.add("active");
+    }
+
+    function closeModal(id) {
+      document.getElementById(id).classList.remove("active");
+    }
+  </script>
+
 </body>
 </html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>🎁 A Surprise For You</title>
+  <style>
+    body {
+      margin: 0;
+      background: linear-gradient(to bottom right, #ffe4ec, #d2e8ff);
+      font-family: 'Courier Prime', monospace;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 2rem;
+    }
+
+    h1 {
+      color: #e91e63;
+      margin-bottom: 2rem;
+    }
+
+    .gift-box {
+      width: 150px;
+      height: 150px;
+      background: #ff4d6d;
+      border-radius: 10px;
+      position: relative;
+      cursor: pointer;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease;
+    }
+
+    .gift-box:hover {
+      transform: scale(1.05);
+    }
+
+    .ribbon {
+      position: absolute;
+      width: 100%;
+      height: 20px;
+      background: #fff;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+    }
+
+    .ribbon::before {
+      content: "";
+      position: absolute;
+      width: 20px;
+      height: 100%;
+      background: #fff;
+      left: 50%;
+      top: -65px;
+      transform: translateX(-50%);
+    }
+
+    .lid {
+      position: absolute;
+      width: 100%;
+      height: 30px;
+      background: #ff4d6d;
+      border-radius: 10px 10px 0 0;
+      top: -30px;
+      left: 0;
+      z-index: 2;
+      transition: all 0.5s ease;
+    }
+
+    .opened .lid {
+      transform: translateY(-80px) rotate(-10deg);
+    }
+
+    .video-box {
+      margin-top: 2rem;
+      display: none;
+      max-width: 90vw;
+    }
+
+    .video-box video {
+      width: 100%;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    .opened + .video-box {
+      display: block;
+      animation: fadeIn 1s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🎁 I have a surprise for you</h1>
+
+  <div class="gift-box" onclick="openBox(this)">
+    <div class="lid"></div>
+    <div class="ribbon"></div>
+  </div>
+
+ <div class="video-box" id="videoBox">
+  <iframe
+    id="youtubePlayer"
+    width="100%"
+    height="360"
+    style="border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.2);"
+    src=""
+    frameborder="0"
+    allow="autoplay; encrypted-media"
+    allowfullscreen>
+  </iframe>
+</div>
+
+
+  <script>
+     function openBox(box) {
+    box.classList.add("opened");
+
+    // ใส่ลิงก์ YouTube ของคุณตรงนี้ (ต้องเป็น embed format)
+    const youtubeLink = "https://youtu.be/p9_zbmd4cT8";
+
+    const iframe = document.getElementById("youtubePlayer");
+    iframe.src = youtubeLink;
+  }
+  </script>
+
+</body>
+</html>

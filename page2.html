@@ -7,10 +7,16 @@
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap');
 
-    body {
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    html, body {
       margin: 0;
       padding: 0;
-      height: 100vh;
+      width: 100vw;
+      height: 100dvh; /* ✅ เต็มจอจริงทุกอุปกรณ์ */
+      overflow: hidden;
       font-family: 'Courier Prime', monospace;
       background-image: url('01f165ae-713f-497a-8e88-28fdedfedca2.png');
       background-size: cover;
@@ -34,6 +40,7 @@
       height: 100%;
       background: radial-gradient(ellipse at center, rgba(0,0,0,0) 40%, rgba(0,0,0,0.5) 100%);
       z-index: 1;
+      pointer-events: none;
     }
 
     .container {
@@ -76,24 +83,106 @@
         grid-template-columns: 1fr;
       }
     }
+
+    /* ❤️ Heart container */
+    #heart-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100dvh;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .floating-heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: pink;
+      transform: rotate(45deg);
+      animation: floatUp 6s linear infinite;
+      opacity: 0.6;
+    }
+
+    .floating-heart::before,
+    .floating-heart::after {
+      content: "";
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: pink;
+      border-radius: 50%;
+    }
+
+    .floating-heart::before {
+      top: -10px;
+      left: 0;
+    }
+
+    .floating-heart::after {
+      top: 0;
+      left: -10px;
+    }
+
+    @keyframes floatUp {
+      0% {
+        bottom: -50px;
+        opacity: 0;
+      }
+      50% {
+        opacity: 0.7;
+      }
+      100% {
+        bottom: 110%;
+        opacity: 0;
+      }
+    }
   </style>
 </head>
 <body>
-    <iframe src="player.html" style="display:none;" allow="autoplay"></iframe>
 
+  <!-- 🔊 Music -->
+  <iframe src="player.html" style="display:none;" allow="autoplay"></iframe>
+
+  <!-- ❤️ Heart container -->
+  <div id="heart-container"></div>
+
+  <!-- 💌 Main content -->
   <div class="container">
-    <!-- Gallery -->
     <div class="card" onclick="window.location.href='gallery.html'">
       <h2>📸 Our Gallery</h2>
       <p>Snapshots of the little moments that made us smile</p>
     </div>
 
-    <!-- Love Letter -->
     <div class="card" onclick="window.location.href='love.html'">
       <h2>💌 Love Letter from Bacon</h2>
       <p>A few heartfelt words I’ve been wanting to tell you</p>
     </div>
   </div>
+
+  <!-- 🎁 Surprise Box -->
+    <div class="card" onclick="window.location.href='surprises.html'">
+      <h2>🎁 Surprise Boxes</h2>
+      <p>Kiki!</p>
+    </div>
+
+  <script>
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.className = "floating-heart";
+      heart.style.left = `${(Math.random() * 100).toFixed(2)}vw`;
+      heart.style.bottom = "-30px";
+      heart.style.animationDuration = `${(Math.random() * 2 + 4).toFixed(2)}s`;
+      document.getElementById("heart-container").appendChild(heart);
+      setTimeout(() => {
+        heart.remove();
+      }, 6000);
+    }
+
+    setInterval(createHeart, 400);
+  </script>
 
 </body>
 </html>
