@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Grow Together 🍅</title>
+  <style>
+    body {
+      background: #fef9f4;
+      font-family: 'Courier Prime', monospace;
+      text-align: center;
+      padding: 2rem;
+      color: #333;
+      overflow: hidden;
+      position: relative;
+    }
+    .plant-container {
+      position: relative;
+      margin: 20px auto;
+      width: 300px;
+      height: 400px;
+      overflow: hidden;
+      border-radius: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      background: #fff;
+    }
+    .tomato {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      height: 100%;
+      object-fit: cover; /* fit พอดี container */
+      clip-path: inset(80% 0 0 0); /* เริ่มโชว์เฉพาะส่วนล่าง */
+      transition: clip-path 1s ease;
+    }
+    .water-effect {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      background-image: url('drop.png'); /* เปลี่ยน URL เป็นภาพน้ำหยดที่ต้องการ */
+      background-size: cover;
+      background-repeat: repeat;
+      opacity: 0;
+      animation: waterDrop 1s forwards;
+    }
+    @keyframes waterDrop {
+      0% { opacity: 0; }
+      50% { opacity: 0.7; }
+      100% { opacity: 0; }
+    }
+    button {
+      font-size: 1rem;
+      padding: 0.5rem 1rem;
+      background: lightpink;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+    #message {
+      margin-top: 1rem;
+      font-style: italic;
+      color: #c55;
+    }
+  </style>
+</head>
+<body>
+  <h1>🍅 Grow Together</h1>
+  <div class="plant-container">
+    <img src="tomato.png" id="tomato" class="tomato" alt="tomato">
+    <div id="waterEffect" class="water-effect"></div>
+  </div>
+  <button id="waterButton" onclick="waterPlant()">💧 รดน้ำ</button>
+  <div id="message"></div>
+
+  <script>
+    let clipTop = 80;
+    let step = 10;
+    let minClipTop = 0;
+    let isFullyGrown = false;
+
+    function waterPlant() {
+      const button = document.getElementById("waterButton");
+      button.disabled = true; // ปิดปุ่มตอน cooldown
+
+      setTimeout(() => {
+        button.disabled = false; // เปิดปุ่มหลัง 3 วิ
+      }, 3000);
+
+      if (!isFullyGrown) {
+        clipTop -= step;
+        if (clipTop <= minClipTop) {
+          clipTop = minClipTop;
+          isFullyGrown = true;
+          showFinalMessage();
+        } else {
+          showMessage();
+        }
+        document.getElementById("tomato").style.clipPath = `inset(${clipTop}% 0 0 0)`;
+        playWaterEffect();
+      }
+    }
+
+    function playWaterEffect() {
+      const water = document.getElementById("waterEffect");
+      water.style.animation = 'none';
+      void water.offsetWidth; // restart animation
+      water.style.animation = 'waterDrop 1s forwards';
+    }
+
+    function showMessage() {
+      const messages = [
+        "ขอบคุณที่น่ารักกับเค้าตลอดเลยนะคั้บ 💖",
+        "ชอบนะคั้บ เจ้ามะเขือเทศของเค้า 🍅",
+        "หัวใจของเยาชุ่มฉ่ำเพราะมีเธอเยย 🥰",
+        "ง่าาาาาาาาา รักนะคั้บ 🌼",
+        "ขอบคุณที่รดน้ำให้น้องนะคั้บ 💚"
+      ];
+      const randomMsg = messages[Math.floor(Math.random() * messages.length)];
+      document.getElementById("message").textContent = randomMsg;
+    }
+
+    function showFinalMessage() {
+      document.getElementById("message").textContent = "มะเขือเทศของเราสุกเต็มที่แล้ว! 🍅 ขอบคุณที่ดูแลกันจนเติบโตนะคะ 💕";
+    }
+  </script>
+</body>
+</html>
