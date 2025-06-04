@@ -97,6 +97,10 @@
             object-position: bottom;
         }
 
+        .focus-top {
+            object-position: top;
+        }
+
         @media (max-width: 600px) {
             body {
                 padding: 1rem;
@@ -112,13 +116,13 @@
     <div class="gallery-grid">
         <!-- ภาพ 1 -->
         <div class="gallery-item">
-            <img src="HBD.png" alt="Birthday"  onclick="openLightbox(this.src)">
+            <img src="HBD.png" alt="Birthday" onclick="openLightbox(this.src)">
             <div class="caption">🎂 18 March 2025 — Your Birthday Card</div>
         </div>
 
         <!-- ภาพ 2 -->
         <div class="gallery-item">
-            <img src="bicycle.jpg" alt="Salaya" class="focus-bottom"  onclick="openLightbox(this.src)">
+            <img src="bicycle.jpg" alt="Salaya" class="focus-bottom" onclick="openLightbox(this.src)">
             <div class="caption">🚲 20 April 2025 — Our First Bicycle</div>
         </div>
 
@@ -131,30 +135,40 @@
         </div>
 
         <!-- ภาพ 3 -->
-        <!-- <div class="gallery-item">
-      <img src="laugh.jpg" alt="Laugh Together">
-      <div class="caption">😂 27 April 2025 — Just laughing at nothing</div>
-    </div> -->
+        <div class="gallery-item">
+            <img src="call.jpg" alt="Talk" class="focus-top" onclick="openLightbox(this.src)">
+            <div class="caption">📸 12 May 2025 — Mouse kiki Narak</div>
+        </div>
+
+        <div class="gallery-item">
+            <img src="call1.jpg" alt="Talk" class="focus-top" onclick="openLightbox(this.src)">
+            <div class="caption">📸 2 June 2025 — Chub Chub</div>
+        </div>
+
+        <div class="gallery-item">
+            <img src="call2.jpg" alt="Talk" class="focus-top" onclick="openLightbox(this.src)">
+            <div class="caption">📸 3 June 2025 — น่ารักที่สุดดเยยย ง่าาา</div>
+        </div>
 
         <!-- เพิ่มอีกได้เลย -->
     </div>
 
     <div id="lightbox" class="lightbox-overlay" onclick="closeLightbox()">
         <img id="lightbox-img" src="" alt="">
-      </div>
+    </div>
 
-      <script>
+    <script>
         function openLightbox(src) {
-          const lightbox = document.getElementById('lightbox');
-          const img = document.getElementById('lightbox-img');
-          img.src = src;
-          lightbox.classList.add('active');
+            const lightbox = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            lightbox.classList.add('active');
         }
-      
+
         function closeLightbox() {
-          document.getElementById('lightbox').classList.remove('active');
+            document.getElementById('lightbox').classList.remove('active');
         }
-      </script>
+    </script>
 
 </body>
 
