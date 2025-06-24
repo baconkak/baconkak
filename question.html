@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <title>รหัสลับของหัวใจ 💜</title>
+  <style>
+    body {
+      font-family: 'Kanit', sans-serif;
+      background: linear-gradient(to bottom, #f3e8ff, #e0cffe);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      background-color: white;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(160, 120, 200, 0.3);
+      text-align: center;
+      max-width: 350px;
+      width: 90%;
+    }
+
+    h1 {
+      color: #a970ff;
+      margin-bottom: 20px;
+    }
+
+    p {
+      color: #666;
+      margin-bottom: 20px;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 12px;
+      border: 2px solid #d4bfff;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      font-size: 16px;
+    }
+
+    button {
+      background-color: #d4bfff;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background-color: #c29fff;
+    }
+
+    .message {
+      margin-top: 20px;
+      font-weight: bold;
+      color: #a970ff;
+    }
+
+    .error {
+      color: #ff5e9c;
+    }
+
+    .success {
+      color: #60d394;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>🔐 รหัสลับของหัวใจ</h1>
+  <p>คำใบ้ วันเดือนปี(xxxxxxxx) บ๊ายบาย 💌</p>
+  <input type="text" id="codeInput" placeholder="ใส่รหัสที่เธอคิดว่าใช่ คิคิ ไม่บอกหยอกแบร่ ๆ">
+  <button onclick="checkCode()">ยืนยัน</button>
+  <div class="message" id="messageBox"></div>
+</div>
+
+<script>
+  function checkCode() {
+    const answer = document.getElementById("codeInput").value.trim();
+    const messageBox = document.getElementById("messageBox");
+
+    // แก้รหัสตรงนี้ได้ตามใจเลย
+    const correctCode = "24042025"; // ตัวอย่าง: วันครบรอบ
+
+    if (answer === correctCode) {
+        window.location.href = "postcard.html";
+      messageBox.innerHTML = "🎉 ถูกต้องนะค้าบ รางวัลของเธอคือ... <br> 💖 เดตคืนนี้พร้อมของหวานที่เธอเลือกได้เลย!";
+      messageBox.className = "message success";
+    } else {
+      messageBox.textContent = "❌ รหัสผิดน้า ลองนึกถึงวันที่สำคัญของเราอีกทีสิ 💭";
+      messageBox.className = "message error";
+    }
+  }
+</script>
+
+</body>
+</html>

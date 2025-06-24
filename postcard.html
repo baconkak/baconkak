@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>💜 Happy 11 Weeks Anniversary 💜</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Kanit&display=swap');
+
+    body {
+      font-family: 'Kanit', sans-serif;
+      background-color: #f9f4ff;
+      margin: 0;
+      padding: 40px 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .postcard {
+      background: #fff;
+      border: 2px dashed #cfa9ff;
+      border-radius: 20px;
+      max-width: 800px;
+      width: 100%;
+      padding: 40px 30px;
+      box-shadow: 0 10px 30px rgba(160, 120, 200, 0.15);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .image-area {
+      background-color: #f2e9ff;
+      border: 2px dashed #d3b3ff;
+      border-radius: 10px;
+      height: auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px;
+    }
+
+    .image-area img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      object-fit: contain;
+      opacity: 0;
+      animation: fadeIn 2s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    .message {
+      font-size: 16px;
+      color: #5c4a72;
+      line-height: 1.7;
+    }
+
+    .message h2 {
+      color: #a970ff;
+      margin-bottom: 15px;
+    }
+
+    @media screen and (max-width: 768px) {
+      .postcard {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Floating Hearts */
+    #heart-container {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .floating-heart {
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      background-color: #d1b3ff;;
+      transform: rotate(45deg);
+      animation: floatUp 6s linear infinite;
+      opacity: 0.6;
+    }
+
+    .floating-heart::before,
+    .floating-heart::after {
+      content: "";
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      background-color: #ffb6d5;
+      border-radius: 50%;
+    }
+
+    .floating-heart::before {
+      top: -8px;
+      left: 0;
+    }
+
+    .floating-heart::after {
+      top: 0;
+      left: -8px;
+    }
+
+    @keyframes floatUp {
+      0% {
+        bottom: -30px;
+        opacity: 0;
+      }
+      50% {
+        opacity: 0.7;
+      }
+      100% {
+        bottom: 110%;
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ❤️ Heart effect -->
+<div id="heart-container"></div>
+
+<div class="postcard">
+  <div class="image-area">
+    <img src="together.jpg" alt="Our photo" />
+  </div>
+  <div class="message">
+    <h2>💜 Happy 11 Weeks Anniversary 💜</h2>
+    <p>
+      สุขสันต์วันครบรอบ 11 สัปดาห์นะคั้บ<br>
+      เวลาผ่านไปไวมากก ๆ ขอบคุณเจ้ามะเขือเทศที่อยู่ข้างเค้านะคั้บ<br><br>
+
+      เธอน่ารัก อบอุ่นมาก ๆ เยย เราชอบฟังเรื่องที่เธอเล่ามาก ๆ เลยครับ<br>
+      ทุก ๆ วันที่มีเธออยู่ เรารู้สึกฟูลฟีลมาก ๆ เลย<br>
+      ขอบคุณที่เป็นเจ้ารอยยิ้มให้เค้า เป็นกำลังใจให้เค้านะคั้บ<br>
+      เธอน่ารักมาก ๆ เลยง่ะ 💗<br><br>
+
+      ถึงช่วงนี้งานเราจาเยอะมาก ๆ เราจาเคลียงานไปด้วยกันนะคั้บ<br><br>
+
+      เค้าสัญญาว่าจะดูแลเจ้าหัวใจดวงนี้ให้้ดีที่สุดเยยนะ<br>
+      เหมือนที่เธอดูแลเค้าอย่างอบอุ่นมาตลอด 💖<br><br>
+
+      จากหัวใจของเค้า,<br>
+      🐶 เจ้าม๋าเด็ก
+    </p>
+  </div>
+</div>
+
+<script>
+  // floating hearts 💗
+  function createHeart() {
+    const heart = document.createElement("div");
+    heart.className = "floating-heart";
+    heart.style.left = `${Math.random() * 100}vw`;
+    heart.style.bottom = "-20px";
+    heart.style.animationDuration = `${(Math.random() * 2 + 4).toFixed(2)}s`;
+    document.getElementById("heart-container").appendChild(heart);
+    setTimeout(() => heart.remove(), 6000);
+  }
+
+  setInterval(createHeart, 500);
+</script>
+
+</body>
+</html>
