@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>>yay~ 11 weeks already since I know u 💞</title>
+  <title>>yay~ 12 weeks already since I know u 💞</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap');
 
@@ -81,10 +81,26 @@
 </head>
 <body>
   
-  <h1>Yay~ 11 weeks already since I know u 💞</h1>
-  <div class="tagline">“11 weeks might seem short, but since you came into my life, everything feels brighter.”</div>
+  <h1>Yay~ 12 weeks already since I know u 💞</h1>
+  <div id="typed" class="tagline"></div>
+  
 
   <button class="button" onclick="goToPage2()">Click to continue</button>
+
+  <div id="typed" class="tagline"></div>
+
+<script>
+  const msg = "“12 weeks might seem short, but since you came into my life, everything feels brighter.”";
+  let i = 0;
+  function typeLine() {
+    if (i < msg.length) {
+      document.getElementById("typed").textContent += msg.charAt(i);
+      i++;
+      setTimeout(typeLine, 40);
+    }
+  }
+  typeLine();
+</script>
 
   <script>
     function goToPage2() {

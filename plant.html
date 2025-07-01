@@ -3,132 +3,107 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Grow Together 🍅</title>
+  <title>🐾 Take Care of Doggy</title>
   <style>
     body {
-      background: #fef9f4;
+      background: #fff9f3;
       font-family: 'Courier Prime', monospace;
       text-align: center;
       padding: 2rem;
       color: #333;
       overflow: hidden;
-      position: relative;
     }
-    .plant-container {
+
+    .dog-container {
       position: relative;
       margin: 20px auto;
-      width: 300px;
-      height: 400px;
-      overflow: hidden;
-      border-radius: 20px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.2);
-      background: #fff;
+      width: 280px;
+      height: 280px;
     }
-    .tomato {
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      height: 100%;
-      object-fit: cover; /* fit พอดี container */
-      clip-path: inset(80% 0 0 0); /* เริ่มโชว์เฉพาะส่วนล่าง */
-      transition: clip-path 1s ease;
-    }
-    .water-effect {
-      position: absolute;
-      top: 0;
-      left: 0;
+
+    .dog {
       width: 100%;
-      height: 100%;
-      pointer-events: none;
-      background-image: url('drop.png'); /* เปลี่ยน URL เป็นภาพน้ำหยดที่ต้องการ */
-      background-size: cover;
-      background-repeat: repeat;
-      opacity: 0;
-      animation: waterDrop 1s forwards;
+      transition: transform 0.3s;
     }
-    @keyframes waterDrop {
-      0% { opacity: 0; }
-      50% { opacity: 0.7; }
-      100% { opacity: 0; }
+
+    .dog-happy {
+      animation: wagTail 0.5s ease;
     }
+
+    @keyframes wagTail {
+      0% { transform: rotate(0deg); }
+      25% { transform: rotate(2deg); }
+      50% { transform: rotate(-2deg); }
+      75% { transform: rotate(2deg); }
+      100% { transform: rotate(0deg); }
+    }
+
     button {
       font-size: 1rem;
-      padding: 0.5rem 1rem;
-      background: lightpink;
+      margin: 0.5rem;
+      padding: 0.6rem 1.2rem;
+      background: lightblue;
       border: none;
       border-radius: 10px;
       cursor: pointer;
     }
-    button:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
+
+    button:hover {
+      background: #bfe9ff;
     }
+
     #message {
-      margin-top: 1rem;
+      margin-top: 1.2rem;
       font-style: italic;
-      color: #c55;
+      color: #cc4d4d;
+      min-height: 2rem;
     }
   </style>
 </head>
 <body>
-  <h1>🍅 Grow Together</h1>
-  <div class="plant-container">
-    <img src="tomato.png" id="tomato" class="tomato" alt="tomato">
-    <div id="waterEffect" class="water-effect"></div>
+  <h1>🐶 น้องหมาของเรา</h1>
+  <div class="dog-container">
+    <img src="dog.png" id="dog" class="dog" alt="cute dog" />
   </div>
-  <button id="waterButton" onclick="waterPlant()">💧 รดน้ำ</button>
-  <div id="message"></div>
+
+  <div>
+    <button onclick="interact('feed')">🍖 ให้อาหาร</button>
+    <button onclick="interact('pet')">🤚 ลูบหัว</button>
+    <button onclick="interact('play')">🎾 เล่นด้วย</button>
+  </div>
+
+  <div id="message">คลิกเพื่อดูน้องหมาโต้ตอบนะคับ~</div>
 
   <script>
-    let clipTop = 80;
-    let step = 10;
-    let minClipTop = 0;
-    let isFullyGrown = false;
+    const dog = document.getElementById("dog");
+    const messageBox = document.getElementById("message");
 
-    function waterPlant() {
-      const button = document.getElementById("waterButton");
-      button.disabled = true; // ปิดปุ่มตอน cooldown
+    const responses = {
+      feed: [
+        "อร่อยมั่กกก ขอบคุณคับ 🐶💕",
+        "งั่ม ๆ เค้าชอบอาหารที่เธอให้มากเยย!",
+        "เค้าจะโตเป็นหมาดีเพราะมีเธอนะคั้บ 🍖"
+      ],
+      pet: [
+        "อู้ววว ลูบแล้วรู้สึกดีเยย~ 🐾",
+        "หงิง~ เค้าชอบเวลาเธอลูบหัวน้า~",
+        "อย่าหยุดน้าา เค้ารักเธอที่สุด 💖"
+      ],
+      play: [
+        "วู้ววว สนุกมากเยย! 🎾",
+        "เธอเล่นกับเค้า เค้าดีใจที่สุดเลย~",
+        "วันนี้เค้ามีความสุขมากเลยงับ 🐶✨"
+      ]
+    };
 
-      setTimeout(() => {
-        button.disabled = false; // เปิดปุ่มหลัง 3 วิ
-      }, 3000);
+    function interact(action) {
+      dog.classList.remove("dog-happy");
+      void dog.offsetWidth; // restart animation
+      dog.classList.add("dog-happy");
 
-      if (!isFullyGrown) {
-        clipTop -= step;
-        if (clipTop <= minClipTop) {
-          clipTop = minClipTop;
-          isFullyGrown = true;
-          showFinalMessage();
-        } else {
-          showMessage();
-        }
-        document.getElementById("tomato").style.clipPath = `inset(${clipTop}% 0 0 0)`;
-        playWaterEffect();
-      }
-    }
-
-    function playWaterEffect() {
-      const water = document.getElementById("waterEffect");
-      water.style.animation = 'none';
-      void water.offsetWidth; // restart animation
-      water.style.animation = 'waterDrop 1s forwards';
-    }
-
-    function showMessage() {
-      const messages = [
-        "ขอบคุณที่น่ารักกับเค้าตลอดเลยนะคั้บ 💖",
-        "ชอบนะคั้บ เจ้ามะเขือเทศของเค้า 🍅",
-        "หัวใจของเยาชุ่มฉ่ำเพราะมีเธอเยย 🥰",
-        "ง่าาาาาาาาา รักนะคั้บ 🌼",
-        "ขอบคุณที่รดน้ำให้น้องนะคั้บ 💚"
-      ];
-      const randomMsg = messages[Math.floor(Math.random() * messages.length)];
-      document.getElementById("message").textContent = randomMsg;
-    }
-
-    function showFinalMessage() {
-      document.getElementById("message").textContent = "มะเขือเทศของเราสุกเต็มที่แล้ว! 🍅 ขอบคุณที่ดูแลกันจนเติบโตนะคะ 💕";
+      const lines = responses[action];
+      const msg = lines[Math.floor(Math.random() * lines.length)];
+      messageBox.textContent = msg;
     }
   </script>
 </body>

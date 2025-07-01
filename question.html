@@ -77,7 +77,7 @@
 
 <div class="container">
   <h1>🔐 รหัสลับของหัวใจ</h1>
-  <p>คำใบ้ วันเดือนปี(xxxxxxxx) บ๊ายบาย 💌</p>
+  <p>คำใบ้ 01010010 01000001 01001101 01000001 💌</p>
   <input type="text" id="codeInput" placeholder="ใส่รหัสที่เธอคิดว่าใช่ คิคิ ไม่บอกหยอกแบร่ ๆ">
   <button onclick="checkCode()">ยืนยัน</button>
   <div class="message" id="messageBox"></div>
@@ -89,14 +89,14 @@
     const messageBox = document.getElementById("messageBox");
 
     // แก้รหัสตรงนี้ได้ตามใจเลย
-    const correctCode = "24042025"; // ตัวอย่าง: วันครบรอบ
+    const correctCode = "RAMA"; // ตัวอย่าง: วันครบรอบ
 
     if (answer === correctCode) {
         window.location.href = "postcard.html";
       messageBox.innerHTML = "🎉 ถูกต้องนะค้าบ รางวัลของเธอคือ... <br> 💖 เดตคืนนี้พร้อมของหวานที่เธอเลือกได้เลย!";
       messageBox.className = "message success";
     } else {
-      messageBox.textContent = "❌ รหัสผิดน้า ลองนึกถึงวันที่สำคัญของเราอีกทีสิ 💭";
+      messageBox.textContent = "❌ รหัสผิดน้า ลองนึกอีกทีจิ 💭";
       messageBox.className = "message error";
     }
   }

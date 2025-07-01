@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="th">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>💌 ซองจดหมายให้คนน่ารัก</title>
   <style>
     body {
@@ -40,18 +41,16 @@
       border-radius: 8px;
       position: relative;
       cursor: pointer;
-      box-shadow: inset 0 0 0 1px #e0caa6, 0 4px 10px rgba(0,0,0,0.1);
+      box-shadow: inset 0 0 0 1px #e0caa6, 0 4px 10px rgba(0, 0, 0, 0.1);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
-      background-image: linear-gradient(
-        145deg,
-        rgba(255, 255, 255, 0) 49.5%,
-        rgba(0, 0, 0, 0.05) 50.5%
-      );
+      background-image: linear-gradient(145deg,
+          rgba(255, 255, 255, 0) 49.5%,
+          rgba(0, 0, 0, 0.05) 50.5%);
     }
 
     .envelope:hover {
       transform: scale(1.05);
-      box-shadow: inset 0 0 0 1px #e0caa6, 0 6px 14px rgba(0,0,0,0.15);
+      box-shadow: inset 0 0 0 1px #e0caa6, 0 6px 14px rgba(0, 0, 0, 0.15);
     }
 
     .envelope-label {
@@ -65,7 +64,8 @@
 
     .modal {
       position: fixed;
-      top: 0; left: 0;
+      top: 0;
+      left: 0;
       width: 100vw;
       height: 100vh;
       background: rgba(0, 0, 0, 0.4);
@@ -118,12 +118,53 @@
       color: #333;
     }
 
+    #falling-text-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 999;
+    }
+
+    .falling-text {
+      position: absolute;
+      top: -2rem;
+      color: #ff69b4;
+      font-weight: bold;
+      opacity: 0.8;
+      animation: fallDown linear forwards;
+    }
+
+    @keyframes fallDown {
+      0% {
+        transform: translateY(0);
+        opacity: 0.8;
+      }
+
+      100% {
+        transform: translateY(100vh);
+        opacity: 0;
+      }
+    }
+
+
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
   </style>
 </head>
+
 <body>
   <iframe src="music/playerlove.html" style="display:none;" allow="autoplay"></iframe>
   <h1>💌 ซองจดหมายจากเบคอน</h1>
@@ -136,12 +177,16 @@
     <div class="envelope" onclick="openModal('letter2')">
       <div class="envelope-label">13 พ.ค. 2568</div>
     </div>
-  </div>
 
-   <div class="envelope" onclick="openModal('letter3')">
+    <div class="envelope" onclick="openModal('letter3')">
       <div class="envelope-label">3 มิ.ย. 2568</div>
     </div>
+
+    <div class="envelope" onclick="openModal('letter4')">
+      <div class="envelope-label">1 ก.ค. 2568</div>
+    </div>
   </div>
+
 
   <!-- จดหมาย 1 -->
   <div class="modal" id="letter1">
@@ -169,7 +214,7 @@
     <div class="modal-content">
       <button class="close-btn" onclick="closeModal('letter2')">&times;</button>
       <h2>📬 ถึงลูกสาวสุดน่ารักของคุณแม่ คิคิ</h2>
-      <p> 
+      <p>
         5 สัปดาห์แย้ว ไวมาก ๆๆ<br />
         ขอโทษที่หลอกว่าจะไปนอนนะครับ แบร่ <br />
         ขอบคุณที่น่ารักกับเค้าตลอดเยย นักซัพพอร์ตของเค้า <br />
@@ -181,12 +226,12 @@
     </div>
   </div>
 
-   <!-- จดหมาย 3 -->
-    <div class="modal" id="letter3">
+  <!-- จดหมาย 3 -->
+  <div class="modal" id="letter3">
     <div class="modal-content">
       <button class="close-btn" onclick="closeModal('letter3')">&times;</button>
       <h2>📬 ถึงเจ้ามะเขือเทศแสนรักของเค้า</h2>
-      <p> 
+      <p>
         8 สัปดาห์แย้ว เย้ ๆๆๆๆ สุชสันต์วันครบรอบ 2 เดือนนะคะที่รัก 💖<br />
         2 เดือนนี้ได้รู้จักอะไรเธอหลาย ๆ อย่างมาก ๆ ทำให้รู้ว่าเธอโตมาดีมั่ก ๆ เยย<br />
         สัปดาห์นี้เธอน่าจาเหนื่อยมั่ก ๆ เยยง่ะ ไปทั้งรามาตั้ง 3 วัน ทำกราฟฟิคดั้ว <br />
@@ -201,6 +246,22 @@
     </div>
   </div>
 
+  <!-- จดหมาย 3 -->
+  <div class="modal" id="letter4">
+    <div class="modal-content">
+      <button class="close-btn" onclick="closeModal('letter4')">&times;</button>
+      <h2>📬 ถึงเจ้าสาวของเค้า</h2>
+      <p>
+        12 สัปดาห์แย้ว ผ่านมาครึ่งปี 2025 แย้วนะคะคุณที่รัก 💖
+        สุขสันต์วันครบรอบ 3 เดือนนะคั้บคุณหวานใจ 3 เดือนนี้เยาได้รู้จักเธอเย้อมาก ๆ
+        เยาดีใจมาก ๆ ที่ได้รู้จักเธอนะคั้บ ขอบคุณที่อยู่ข้าง ๆ เยาเสมอ ไม่ว่าจะตอนเธอยิ้ม หัวเราะ หรือแม้แต่ตอนเหนื่อย ๆ
+        เธอเก่งมาก ๆ เลยนะคั้บ เบคอนภูมิใจในตัวเจ้ามะเขือเทศมากที่สุดเลย 🍅 เยาอยากอยู่เคียงข้างเธอทุกวัน ทุกเดือน
+        ทุกปีต่อจากนี้เลยนะคั้บ <br />
+        —รักเธอที่สุดเลยนะ จากเบคอนเจ้าม๋าเด็กสุดน่ารัก 💌
+      </p>
+    </div>
+  </div>
+
   <script>
     function openModal(id) {
       document.getElementById(id).classList.add("active");
@@ -211,5 +272,31 @@
     }
   </script>
 
+  <!-- ตัวอักษรลอย Happy 3 Month Anniversary -->
+<div id="falling-text-container"></div>
+
+<script>
+  const messages = ["H", "a", "p", "p", "y", " ", "3", " ", "M", "o", "n", "t", "h", " ", "A", "n", "n", "i", "v", "e", "r", "s", "a", "r", "y", " 💖"];
+  const container = document.getElementById("falling-text-container");
+
+  function createFallingText() {
+    const span = document.createElement("span");
+    span.textContent = messages[Math.floor(Math.random() * messages.length)];
+    span.className = "falling-text";
+    span.style.left = Math.random() * 100 + "vw";
+    span.style.animationDuration = 3 + Math.random() * 2 + "s";
+    span.style.fontSize = 18 + Math.random() * 10 + "px";
+    container.appendChild(span);
+
+    setTimeout(() => {
+      span.remove();
+    }, 5000);
+  }
+
+  setInterval(createFallingText, 200);
+</script>
+
+
 </body>
+
 </html>
